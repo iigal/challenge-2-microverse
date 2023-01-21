@@ -28,28 +28,37 @@ function readLine() {
  * The function is expected to return an INTEGER.
  * The function accepts INTEGER_ARRAY a as parameter.
  */
-
+// 7 1 3 4 1 7
 function minimumDistances(a) {
     // Write your code here
-    let counter =0;
-    let smCounter =0;
-    for (let i=0; i<a.length; i++){
+    let smCounter = 0;
+    let counter = 0;
+    let flag = true;
+for (let i = 0; i < a.length; i++) {
+    
+    counter = 0;
+    for (let j = i + 1; j < a.length; j++) {
+        counter++;
         
-        for (let j =i; j< a.length; j++){
-            counter++;
-            if(a[i]==a[j]){
-                if(smCounter !=0){
-                    if(smCounter > counter){
-                        smCounter = counter;
-                    }
-                }else {
+        if (a[i] == a[j]) {
+            flag = false;
+            if (smCounter != 0) {
+                if (smCounter > counter) {
                     smCounter = counter;
                 }
-                break;
+            } else {
+                smCounter = counter;
             }
+            break;
         }
     }
+    
+}
+    if (flag) {
+        return -1;
+    }else{
     return smCounter;
+    }
 }
 
 function main() {
